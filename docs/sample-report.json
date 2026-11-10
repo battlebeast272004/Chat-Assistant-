@@ -1,0 +1,452 @@
+{
+  "report_schema_version": "1.0",
+  "assessment_id": "ff6b5d04-7238-45aa-8bf3-ae3f31514cbb",
+  "generated_at": "2026-11-10T08:03:11.125728Z",
+  "duration_ms": 2000,
+  "input_url": "https://www.allbirds.com",
+  "compatibility": {
+    "status": "Good candidate",
+    "rule": "R9",
+    "reasons": [
+      "5 sample product(s) extracted from shopify_products_json.",
+      "Self-serve installation likely via cms_plugin_app."
+    ],
+    "next_steps": [
+      "Install our Shopify app, then turn on its app embed in Online Store > Themes > Customize > App embeds."
+    ]
+  },
+  "target": {
+    "original_url": "https://www.allbirds.com",
+    "normalized_url": "https://www.allbirds.com/",
+    "final_url": "https://www.allbirds.com/",
+    "is_accessible": true,
+    "http_status": 200,
+    "page_title": "Allbirds: Comfortable, Sustainable Shoes & Apparel",
+    "response_time_ms": 313,
+    "redirect_chain": [
+      "https://www.allbirds.com/"
+    ],
+    "error_code": null,
+    "error": null
+  },
+  "platform": {
+    "detected_platform": "shopify",
+    "confidence": "high",
+    "evidence": [
+      {
+        "platform": "shopify",
+        "signal": "shopify.header.powered-by",
+        "description": "Powered-By: Shopify header",
+        "source": "header",
+        "detail": "powered-by: Shopify",
+        "weight": 3
+      },
+      {
+        "platform": "shopify",
+        "signal": "shopify.meta.digital-wallet",
+        "description": "shopify-digital-wallet meta tag",
+        "source": "meta",
+        "detail": "<meta shopify-digital-wallet=\"/11044168/digital_wallets/dialog\">",
+        "weight": 3
+      },
+      {
+        "platform": "shopify",
+        "signal": "shopify.markup.shopify-object",
+        "description": "Shopify.shop / ShopifyAnalytics JS globals",
+        "source": "markup",
+        "detail": "Shopify.shop =",
+        "weight": 3
+      }
+    ],
+    "scores": {
+      "shopify": 19
+    },
+    "notes": []
+  },
+  "product_data": {
+    "discovery": {
+      "base_url": "https://www.allbirds.com",
+      "platform": "shopify",
+      "sources": [
+        {
+          "source_type": "shopify_products_json",
+          "source_url": "https://www.allbirds.com/products.json?limit=5",
+          "accessible": true,
+          "requires_auth": false,
+          "limitations": [
+            "Response does not include a currency; prices are in the shop's currency, which is not stated here.",
+            "Paginated (max 250 per page); no inventory quantities, only a per-variant 'available' flag.",
+            "Only products published to the Online Store channel are listed."
+          ],
+          "priority": 1,
+          "http_status": 200,
+          "item_count": 5,
+          "evidence": "Returned 5 product(s) with limit=5.",
+          "sample_urls": []
+        },
+        {
+          "source_type": "json_ld",
+          "source_url": "https://www.allbirds.com/",
+          "accessible": false,
+          "requires_auth": false,
+          "limitations": [
+            "No schema.org Product JSON-LD on the homepage."
+          ],
+          "priority": 2,
+          "http_status": 200,
+          "item_count": null,
+          "evidence": null,
+          "sample_urls": []
+        },
+        {
+          "source_type": "json_ld",
+          "source_url": "https://www.allbirds.com/collections/all",
+          "accessible": false,
+          "requires_auth": false,
+          "limitations": [
+            "No schema.org Product JSON-LD on the catalog page."
+          ],
+          "priority": 2,
+          "http_status": 200,
+          "item_count": null,
+          "evidence": null,
+          "sample_urls": []
+        },
+        {
+          "source_type": "product_sitemap",
+          "source_url": "https://www.allbirds.com/sitemap_products_1.xml?from=1878193471557&to=7369944137808",
+          "accessible": true,
+          "requires_auth": false,
+          "limitations": [
+            "Sitemaps list URLs only; product details must be read from each product page."
+          ],
+          "priority": 3,
+          "http_status": 200,
+          "item_count": 369,
+          "evidence": "Product sitemap with 369 URL(s).",
+          "sample_urls": [
+            "https://www.allbirds.com/products/mens-wool-runners",
+            "https://www.allbirds.com/products/womens-wool-runners-natural-black"
+          ]
+        },
+        {
+          "source_type": "html_product_pages",
+          "source_url": "https://www.allbirds.com/collections/all",
+          "accessible": true,
+          "requires_auth": false,
+          "limitations": [
+            "Product URLs identified by URL pattern; data is read only from structured data (JSON-LD / OpenGraph) on each product page."
+          ],
+          "priority": 3,
+          "http_status": 200,
+          "item_count": 6,
+          "evidence": "6 product-like link(s) found on the catalog page.",
+          "sample_urls": [
+            "https://www.allbirds.com/products/mens-tree-runner-nz-medium-grey",
+            "https://www.allbirds.com/products/mens-runner-nz-slip-on-mushroom"
+          ]
+        },
+        {
+          "source_type": "sitemap",
+          "source_url": "https://www.allbirds.com/sitemap.xml",
+          "accessible": true,
+          "requires_auth": false,
+          "limitations": [],
+          "priority": 4,
+          "http_status": 200,
+          "item_count": 8,
+          "evidence": "Sitemap index with 8 child sitemap(s); 1 look product-specific.",
+          "sample_urls": []
+        },
+        {
+          "source_type": "xml_feed",
+          "source_url": "https://www.allbirds.com/collections/all.atom",
+          "accessible": true,
+          "requires_auth": false,
+          "limitations": [],
+          "priority": 5,
+          "http_status": 200,
+          "item_count": 25,
+          "evidence": "FEED feed with 25 entries.",
+          "sample_urls": []
+        }
+      ],
+      "recommended_source": "shopify_products_json",
+      "probes": [
+        {
+          "url": "https://www.allbirds.com/",
+          "purpose": "homepage",
+          "http_status": 200,
+          "error_code": null,
+          "response_time_ms": 313
+        },
+        {
+          "url": "https://www.allbirds.com/robots.txt",
+          "purpose": "robots.txt",
+          "http_status": 200,
+          "error_code": null,
+          "response_time_ms": 155
+        },
+        {
+          "url": "https://www.allbirds.com/products.json?limit=5",
+          "purpose": "shopify products.json",
+          "http_status": 200,
+          "error_code": null,
+          "response_time_ms": 186
+        },
+        {
+          "url": "https://www.allbirds.com/sitemap.xml",
+          "purpose": "sitemap",
+          "http_status": 200,
+          "error_code": null,
+          "response_time_ms": 186
+        }
+      ],
+      "notes": [
+        "robots.txt lists 1 sitemap(s).",
+        "Merchant/Google Shopping and CSV feeds have no standard public URL; they can't be discovered without the merchant providing the location."
+      ]
+    },
+    "extraction": {
+      "source_type": "shopify_products_json",
+      "source_url": "https://www.allbirds.com/products.json?limit=5",
+      "products": [
+        {
+          "name": "Women's Wool Cruiser - Port (Port Sole)",
+          "description": "Innovation meets individuality in the Wool Cruiser, an instant icon designed for every day. With an upper made of 100% p…",
+          "price": 120.0,
+          "currency": null,
+          "category": null,
+          "specifications": {
+            "vendor": "Allbirds",
+            "sku": "A12858W050",
+            "options": {
+              "Size": [
+                "5",
+                "5.5",
+                "6",
+                "6.5"
+              ]
+            },
+            "variant_count": 13,
+            "tags": [
+              "11/3/26 DROP",
+              "allbirds::cfId => color-f67ac276729fd74d9edd3ad836f79a7e",
+              "allbirds::hue => red"
+            ]
+          },
+          "image_url": "https://cdn.shopify.com/s/files/1/1104/4168/files/A12858W090-PORT_SIDE_TRANSPARENT.png?v=1793836076",
+          "product_url": "https://www.allbirds.com/products/womens-wool-cruiser-port-port-sole",
+          "availability": "InStock"
+        },
+        {
+          "name": "Women's Wool Runner NZ - Shadow Blue (Natural White Sole)",
+          "description": "Rethinking a classic isn’t easy, but breaking new ground rarely is. The Wool Runner NZ manages both, combining the origi…",
+          "price": 120.0,
+          "currency": null,
+          "category": null,
+          "specifications": {
+            "vendor": "Allbirds",
+            "sku": "A12799W050",
+            "options": {
+              "Size": [
+                "5",
+                "5.5",
+                "6",
+                "6.5"
+              ]
+            },
+            "variant_count": 13,
+            "tags": [
+              "11/3/26 DROP",
+              "allbirds::cfId => color-edf97af257c1e36d936a28375fac5f9c",
+              "allbirds::hue => blue"
+            ]
+          },
+          "image_url": "https://cdn.shopify.com/s/files/1/1104/4168/files/A12799W-SHADOWBLUE_SIDE_TRANSPARENT.png?v=1793835066",
+          "product_url": "https://www.allbirds.com/products/womens-wool-runner-nz-shadow-blue-natural-white-sole",
+          "availability": "InStock"
+        }
+      ],
+      "items_extracted": 5,
+      "field_coverage": {
+        "name": 100.0,
+        "description": 100.0,
+        "price": 100.0,
+        "currency": 0.0,
+        "category": 0.0,
+        "specifications": 100.0,
+        "image_url": 100.0,
+        "product_url": 100.0,
+        "availability": 100.0
+      },
+      "attempts": [
+        {
+          "source_type": "shopify_products_json",
+          "source_url": "https://www.allbirds.com/products.json?limit=5",
+          "products_extracted": 5,
+          "error": null
+        }
+      ],
+      "warnings": []
+    }
+  },
+  "widget": {
+    "recommended_method": "cms_plugin_app",
+    "options": [
+      {
+        "method": "cms_plugin_app",
+        "feasibility": "likely",
+        "evidence": [
+          "Shopify storefront detected (high confidence); app embed blocks are supported by Shopify themes.",
+          "CSP present and allows the widget script and API origins."
+        ],
+        "client_action_required": "Install our Shopify app, then turn on its app embed in Online Store > Themes > Customize > App embeds.",
+        "permissions_required": [
+          "Shopify store owner, or staff with 'Apps and channels' and 'Themes' permissions"
+        ],
+        "risks": [
+          "Requires our Shopify app to be available (App Store listing or custom distribution link).",
+          "App embeds render on the Online Store only, not on checkout or headless storefronts."
+        ]
+      },
+      {
+        "method": "google_tag_manager",
+        "feasibility": "likely",
+        "evidence": [
+          "GTM container(s) loaded on the homepage: GTM-TH8KRSBJ.",
+          "CSP present and allows the widget script and API origins."
+        ],
+        "client_action_required": "Create a Custom HTML tag with the widget snippet in GTM-TH8KRSBJ, trigger: All Pages (or Initialization), then Publish.",
+        "permissions_required": [
+          "Publish permission on GTM container GTM-TH8KRSBJ"
+        ],
+        "risks": [
+          "GTM workspace policies (Custom HTML allowlists/blocklists) can prevent Custom HTML tags.",
+          "Consent manager present (OneTrust): the tag's trigger may need a consent category, otherwise it may not fire for users who decline.",
+          "If GTM runs inside a Shopify Customer Events (custom pixel) sandbox, it cannot inject the widget into the page."
+        ]
+      },
+      {
+        "method": "script_tag",
+        "feasibility": "likely",
+        "evidence": [
+          "CSP present and allows the widget script and API origins.",
+          "Platform shopify provides a standard place to add site-wide scripts."
+        ],
+        "client_action_required": "Paste the snippet before </head> in layout/theme.liquid (Online Store > Themes > Edit code).",
+        "permissions_required": [
+          "Shopify staff permission to edit themes"
+        ],
+        "risks": [
+          "Theme edits are lost when the merchant switches or replaces the theme."
+        ]
+      },
+      {
+        "method": "agency_handoff",
+        "feasibility": "possible",
+        "evidence": [
+          "Always available if the client works with a developer or agency."
+        ],
+        "client_action_required": "Send our installation package (snippet, integration docs) to the developer/agency responsible for the site.",
+        "permissions_required": [
+          "Client authorisation for their developer/agency to make the change"
+        ],
+        "risks": [
+          "Timeline depends on the third party's release cycle.",
+          "Ownership of future widget updates must be agreed with the agency."
+        ]
+      }
+    ],
+    "csp": {
+      "present": true,
+      "enforced": true,
+      "report_only": false,
+      "sources": [
+        "header"
+      ],
+      "checks": [
+        {
+          "directive": "(none)",
+          "target": "https://widget.shopping-assistant.example/v1/widget.js",
+          "allowed": true,
+          "reason": "No script-related directive or default-src; not restricted."
+        },
+        {
+          "directive": "(none)",
+          "target": "https://api.shopping-assistant.example/",
+          "allowed": true,
+          "reason": "No connect-related directive or default-src; not restricted."
+        }
+      ],
+      "inline_scripts_allowed": true,
+      "verdict": "allows",
+      "notes": [
+        "upgrade-insecure-requests is set: all widget URLs must be HTTPS."
+      ]
+    },
+    "signals": {
+      "gtm_containers": [
+        "GTM-TH8KRSBJ"
+      ],
+      "gtag_ids": [],
+      "frontend_framework": null,
+      "headless_commerce": false,
+      "existing_chat_widgets": [],
+      "consent_managers": [
+        "OneTrust"
+      ],
+      "page_cache": [],
+      "free_hosted_domain": false
+    },
+    "undetectable_permissions": [
+      "Whether the client is the Shopify store owner or a staff member with Apps/Themes permissions.",
+      "Whether the client has Publish rights on GTM container(s) GTM-TH8KRSBJ.",
+      "Whether the client can edit theme/template code or deploy front-end changes.",
+      "Whether the client (or their host/CDN) can change HTTP response headers such as Content-Security-Policy.",
+      "Hosting or plan restrictions on installing plugins/apps or custom code.",
+      "Internal approval processes for adding a new third-party vendor script (security/privacy review)."
+    ],
+    "notes": [
+      "CSP was checked against placeholder widget URLs; set WIDGET_SCRIPT_URL / WIDGET_API_ORIGIN to the production endpoints."
+    ]
+  },
+  "steps": [
+    {
+      "name": "validation",
+      "status": "completed",
+      "duration_ms": 313,
+      "detail": null
+    },
+    {
+      "name": "platform_detection",
+      "status": "completed",
+      "duration_ms": 264,
+      "detail": null
+    },
+    {
+      "name": "source_discovery",
+      "status": "completed",
+      "duration_ms": 1094,
+      "detail": null
+    },
+    {
+      "name": "product_extraction",
+      "status": "completed",
+      "duration_ms": 0,
+      "detail": null
+    },
+    {
+      "name": "widget_assessment",
+      "status": "completed",
+      "duration_ms": 327,
+      "detail": null
+    },
+    {
+      "name": "compatibility",
+      "status": "completed",
+      "duration_ms": 0,
+      "detail": null
+    }
+  ]
+}

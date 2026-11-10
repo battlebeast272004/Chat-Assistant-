@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Store Assessment</title>
+  <link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="app">
+    <!-- ===== Sidebar ===== -->
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M7 4h-2l-1 2h2l3.6 7.6-1.4 2.4c-.7 1.3.3 3 1.8 3h11v-2h-11l1.1-2h7.5c.8 0 1.4-.4 1.8-1l3.6-6.5c.4-.7-.1-1.5-.9-1.5h-14.8l-.9-2zm3 16a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm9 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg>
+        </span>
+        <div>
+          <div class="brand-name">Store Assessment</div>
+          <div class="brand-sub">AI Shopping Assistant</div>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Main">
+        <button class="nav-item active" data-view="dashboard">
+          <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+          Dashboard
+        </button>
+        <button class="nav-item" data-view="new">
+          <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+          New Assessment
+        </button>
+        <button class="nav-item" data-view="history">
+          <svg viewBox="0 0 24 24"><path d="M13 3a9 9 0 0 0-9 9H1l3.9 3.9.1.1L9 12H6a7 7 0 1 1 2.1 5l-1.4 1.4A9 9 0 1 0 13 3zm-1 5v5l4.3 2.5.7-1.2-3.5-2.1V8H12z"/></svg>
+          Assessment History
+        </button>
+        <button class="nav-item" data-view="settings">
+          <svg viewBox="0 0 24 24"><path d="M19.4 13a7.5 7.5 0 0 0 0-2l2.1-1.6-2-3.5-2.5 1a7 7 0 0 0-1.7-1L15 3h-4l-.4 2.9a7 7 0 0 0-1.7 1l-2.5-1-2 3.5L6.6 11a7.5 7.5 0 0 0 0 2l-2.1 1.6 2 3.5 2.5-1c.5.4 1.1.7 1.7 1L11 21h4l.4-2.9a7 7 0 0 0 1.7-1l2.5 1 2-3.5-2.2-1.6zM13 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"/></svg>
+          Settings
+        </button>
+      </nav>
+
+      <div class="sidebar-section">
+        <div class="sidebar-heading">Recent</div>
+        <ul class="recent-list" id="sidebar-recent"><li class="muted small">No assessments yet</li></ul>
+      </div>
+
+      <div class="sidebar-footer">
+        <span class="status-dot" id="api-dot"></span>
+        <span id="api-status">Checking API…</span>
+      </div>
+    </aside>
+    <div class="scrim" id="scrim" hidden></div>
+
+    <!-- ===== Main ===== -->
+    <main class="main">
+      <header class="topbar">
+        <button class="menu-btn" id="menu-btn" aria-label="Toggle navigation">
+          <svg viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+        </button>
+        <h1 class="page-title" id="page-title">Dashboard</h1>
+      </header>
+
+      <!-- ===== Dashboard / New Assessment ===== -->
+      <section class="view" id="view-dashboard">
+        <div class="hero">
+          <div class="hero-text">
+            <p class="eyebrow">Pre-onboarding check</p>
+            <h2>Assess a store before onboarding</h2>
+            <p class="hero-sub">Enter a store URL. You'll get its platform, where product data can be read from, sample products, and the best way to install the widget.</p>
+          </div>
+          <form class="url-bar" id="assess-form" novalidate>
+            <label class="visually-hidden" for="url-input">Store URL</label>
+            <svg class="url-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.9 12a3.1 3.1 0 0 1 3.1-3.1h4V7H7a5 5 0 0 0 0 10h4v-1.9H7A3.1 3.1 0 0 1 3.9 12zM8 13h8v-2H8v2zm9-6h-4v1.9h4a3.1 3.1 0 0 1 0 6.2h-4V17h4a5 5 0 0 0 0-10z"/></svg>
+            <input id="url-input" type="url" inputmode="url" autocomplete="off" spellcheck="false"
+                   placeholder="https://example-store.com" maxlength="2048" required>
+            <button type="submit" class="btn btn-primary" id="analyse-btn">
+              <span class="spinner" aria-hidden="true"></span>
+              <span class="btn-label">Analyse Website</span>
+            </button>
+          </form>
+        </div>
+
+        <div id="banners" class="banners" aria-live="polite"></div>
+
+        <!-- Live progress -->
+        <article class="card progress-card" id="progress-card" hidden>
+          <div class="card-head">
+            <div>
+              <h3>Assessing <span id="progress-domain"></span></h3>
+              <p class="muted small" id="progress-hint">This usually takes 5–30 seconds.</p>
+            </div>
+            <span class="spinner spinner-dark" aria-hidden="true"></span>
+          </div>
+          <ol class="stepper" id="stepper"></ol>
+        </article>
+
+        <!-- Results (rendered by script.js) -->
+        <div id="results" class="results" hidden></div>
+
+        <div class="stats" id="stats"></div>
+
+        <article class="card">
+          <div class="card-head">
+            <h3>Recent assessments</h3>
+            <button class="btn btn-link" data-goto="history">View all →</button>
+          </div>
+          <div class="table-wrap">
+            <table class="table">
+              <thead><tr><th>Website</th><th>Platform</th><th>Result</th><th>Date</th><th></th></tr></thead>
+              <tbody id="recent-body"></tbody>
+            </table>
+          </div>
+          <p class="empty" id="recent-empty" hidden>No assessments yet. Analyse a store to get started.</p>
+        </article>
+      </section>
+
+      <!-- ===== History ===== -->
+      <section class="view" id="view-history" hidden>
+        <article class="card">
+          <div class="card-head">
+            <h3>Assessment history</h3>
+            <input class="search" id="history-search" type="search" placeholder="Filter this page by domain, platform or result">
+          </div>
+          <div class="table-wrap">
+            <table class="table">
+              <thead><tr><th>Website</th><th>Platform</th><th>Result</th><th>Date</th><th></th></tr></thead>
+              <tbody id="history-body"></tbody>
+            </table>
+          </div>
+          <p class="empty" id="history-empty" hidden>No assessments found.</p>
+          <div class="pager">
+            <button class="btn btn-ghost" id="prev-page">← Newer</button>
+            <span class="muted small" id="page-info"></span>
+            <button class="btn btn-ghost" id="next-page">Older →</button>
+          </div>
+        </article>
+      </section>
+
+      <!-- ===== Settings ===== -->
+      <section class="view" id="view-settings" hidden>
+        <article class="card">
+          <div class="card-head"><h3>Settings</h3></div>
+          <p class="muted">These limits are set on the server and can't be changed from the dashboard.</p>
+          <dl class="settings-list">
+            <div><dt>Request timeout (per request, whole redirect chain)</dt><dd>10 s</dd></div>
+            <div><dt>Max response size</dt><dd>5 MB</dd></div>
+            <div><dt>Max redirects</dt><dd>5</dd></div>
+            <div><dt>Discovery time budget</dt><dd>30 s (+20 s extraction)</dd></div>
+            <div><dt>Sample products</dt><dd>5</dd></div>
+            <div><dt>Assessments per minute (per IP)</dt><dd>10</dd></div>
+            <div><dt>Headless browser (Playwright)</dt><dd>Not enabled</dd></div>
+          </dl>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>

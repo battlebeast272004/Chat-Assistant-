@@ -1,0 +1,13 @@
+# Web framework + ASGI server
+fastapi==0.115.6
+uvicorn[standard]==0.32.1
+pydantic==2.10.4
+python-multipart==0.0.20
+
+# HTTP inspection (used from Stage 2 onward)
+requests==2.32.3
+beautifulsoup4==4.12.3
+defusedxml==0.7.1        # XXE / billion-laughs safe XML parsing for sitemaps and feeds
+
+# NOTE: sqlite3 is part of the Python standard library and must NOT be listed
+# here. `pip install sqlite3` fails because no such package exists on PyPI.

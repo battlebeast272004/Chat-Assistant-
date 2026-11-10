@@ -1,0 +1,48 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# ---- Virtual environments ----
+.venv/
+venv/
+env/
+
+# ---- Runtime data: SQLite database + WAL/SHM/journal side files ----
+data/
+*.db
+*.db-wal
+*.db-shm
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# ---- Runtime logs / process files ----
+*.log
+logs/
+nohup.out
+*.pid
+tmp/
+
+# ---- Environment / secrets (keep the template) ----
+.env
+.env.*
+!.env.example
+
+# ---- Playwright / browser artefacts ----
+playwright-report/
+test-results/
+*.png.tmp
+
+# ---- Editors / OS ----
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
